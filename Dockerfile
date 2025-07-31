@@ -1,19 +1,24 @@
 FROM node:18-alpine
 
-# Setting up the environment variables needed:
+# Set environment variables
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV HOST=0.0.0.0
 
-PATH /usr/chand/repos/AWS-Sessions/NodeJS-Express-API
+# Set working directory inside the container
+WORKDIR /usr/src/app
 
+# Copy only package files first for better caching
+COPY package*.json ./
 
-COPY . /package*.json ./
+# Install only production dependencies
+RUN npm install --only=production
 
-RUN npm install
-
+# Now copy the rest of the app files
 COPY . .
 
+# Expose the application port
 EXPOSE 3000
 
+# Run the application
 CMD ["node", "server.js"]
