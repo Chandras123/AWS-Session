@@ -36,4 +36,14 @@ app.get("/workshop1", (req, res) => {
   res.sendFile(resolve(__dirname, STATIC_DIR, "workshops", "workshop1.html"));
 });
 app.get("/workshop2", (req, res) => {
-  res.sendFile(reso
+  res.sendFile(resolve(__dirname, STATIC_DIR, "workshops", "workshop2.html"));
+});
+app.get("/workshop3", (req, res) => {
+  res.sendFile(resolve(__dirname, STATIC_DIR, "workshops", "workshop3.html"));
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`✅ Server running on port: ${port}`);
+  console.log(`🌐 Access your app at: ${DOMAIN}`);
+});
