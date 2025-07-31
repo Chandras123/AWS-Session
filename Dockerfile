@@ -1,4 +1,4 @@
-FROM almalinux:9
+FROM node:18-alpine
 
 # Set environment variables
 ENV NODE_ENV=production
